@@ -30,22 +30,24 @@ export function Island({
 
   // Use a ref for the last mouse x position
   const lastX = useRef(0);
+
   // Use a ref for rotation speed
   const rotationSpeed = useRef(0);
+
   // Define a damping factor to control rotation damping
   const dampingFactor = 0.95;
 
   // Handle pointer (mouse or touch) down event
   const handlePointerDown = (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-    setIsRotating(true);
+      event.stopPropagation();
+      event.preventDefault();
+      setIsRotating(true);
 
-    // Calculate the clientX based on whether it's a touch event or a mouse event
-    const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+      // Calculate the clientX based on whether it's a touch event or a mouse event
+      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
 
-    // Store the current clientX position for reference
-    lastX.current = clientX;
+      // Store the current clientX position for reference
+      lastX.current = clientX;
   };
 
   // Handle pointer (mouse or touch) up event
