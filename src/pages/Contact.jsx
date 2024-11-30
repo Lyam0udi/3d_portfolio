@@ -15,6 +15,29 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+
+    //console.log(import.meta.env.VITE_APP_EMAILJS_SERVICE_ID);
+    emailjs.send(
+      import.meta.env.VITE_APP_EMAILJS_SERVICE_ID, // Service ID
+      import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID, // Template ID
+      {
+          from_name: form.name,
+          to_name: "Test",
+          from_email: form.email,
+          to_email: import.meta.env.VITE_APP_TO_EMAIL,
+          message: form.message,
+      },
+      import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY // Public key
+    )
+    .then (() => {
+      setIsLoading(false);
+      // Show success alert and hide it
+      setForm({name:'', email:'', message: ''});
+    }).catch((error) =>{
+      setIsLoading(false);
+      console.log(error);
+      // show error alert message
+    })
   };
 
   return (
