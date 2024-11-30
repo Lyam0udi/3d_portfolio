@@ -3,7 +3,9 @@ import { useState } from 'react';
 
 const Contact = () => {
 
-  const [form, setform] = useState({ name: '', email: '', message:''})
+  const [form, setForm] = useState({ name: '', email: '', message:''});
+  const [isLoading, setIsLoading] = useState(false);
+  
   const handleChange = () => {};
   const handleFocus = () => {};
   const handleBlur = () => {};
@@ -62,10 +64,11 @@ const Contact = () => {
           <button 
             type='submit'
             className='btn'
+            disabled={isLoading}
             onFocus={handleFocus}
             onBlur={handleBlur}
           >
-            
+            {isLoading ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>
