@@ -108,15 +108,19 @@ const Contact = () => {
       <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
         <Canvas
         camera={{
-          position: [0, 0, 5]
+          position: [0, 0, 5],
+          fov : 75,
+          near: 0.5,
+          far: 1000
         }}>
-            <Suspense fallback={<Loader />}>
-              <Fox 
-                position={[0.5, 0.35, 0]}
-                rotation={[12, 0, 0]}
-                scale={[0.5, 0.5, 0.5]}
-              />
-            </Suspense>
+          <directionalLight intensity={2.5} position={[0, 0, 1]}/>
+          <Suspense fallback={<Loader />}>
+            <Fox 
+              position={[0.5, 0.35, 0]}
+              rotation={[12, 0, 0]}
+              scale={[0.5, 0.5, 0.5]}
+            />
+          </Suspense>
         </Canvas>
       </div>
     </section>
